@@ -23,29 +23,14 @@ function getHumanChoice(btn){
 function getComputerChoice(){
     let computerChoiceArray = ["Rock", "Paper", "Scissors"];
     let randomNumber = Math.floor(Math.random() * computerChoiceArray.length);
-    let computerChoice;
-    if(randomNumber === 0){
-        computerChoice = computerChoiceArray[0];
-        console.log(`Computer choice: ${computerChoice}`);
-        return computerChoice;
-    }
-
-    else if(randomNumber === 1){
-        computerChoice = computerChoiceArray[1];
-        console.log(`Computer choice: ${computerChoice}`);
-        return computerChoice;
-    }
-
-    if(randomNumber === 2){
-        computerChoice = computerChoiceArray[2];
-        console.log(`Computer choice: ${computerChoice}`);
-        return computerChoice;
-    }
+    let computerChoice = computerChoiceArray[randomNumber];
+    console.log(`Computer choice: ${computerChoice}`);
+    return computerChoice;
 }
 
 let humanScore = 0;
 let computerScore = 0;
-
+let round = 0;
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
@@ -68,12 +53,28 @@ function playRound(humanChoice, computerChoice){
 }
 
 
+
 rpsBtns.forEach(btn =>{
     btn.addEventListener("click", ()=>{
+        if(round === 5){
+        return;
+        }
+        round += 1 
+        console.log(`Round: ${round}`);
+      
         let humanChoice = getHumanChoice(btn)
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
-    })
-})
-
+        
+        if(humanScore > computerScore){
+            console.log("HUMAN WINS!")
+        }
+        else if(humanScore === computerScore){
+            console.log("DRAW!");
+        }
+        else{
+            console.log("COMPUTER WINS!")
+        }
+    }
+)})
 
