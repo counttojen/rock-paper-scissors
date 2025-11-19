@@ -13,27 +13,19 @@ const scores = document.createElement("h3");
 
 body.appendChild(workspaceContainer);
 
+btnContainer.append(rockBtn, paperBtn, scissorsBtn);
+const rpsBtns = btnContainer.querySelectorAll("button");
 
 rockBtn.textContent = "Rock".toUpperCase();
 paperBtn.textContent = "Paper".toUpperCase();
 scissorsBtn.textContent = "Scissors".toUpperCase();
 
-btnContainer.append(rockBtn, paperBtn, scissorsBtn);
-const rpsBtns = btnContainer.querySelectorAll("button");
 
+workspaceContainer.appendChild(scoreContainer);
+workspaceContainer.prepend(btnContainer);
+workspaceContainer.prepend(roundDisplay);
+workspaceContainer.append(scores);
 
-//btn styles 
-rpsBtns.forEach(btn =>{
-    Object.assign(btn.style,{
-        backgroundColor: "#ffffff",
-        border: "none",
-        margin: "8px",
-        padding: "10px 20px",
-        borderRadius: "10px",
-        fontFamily: "Elms Sans",
-        fontSize: "20px",
-    })
-})
 
 
 function getHumanChoice(btn){
@@ -53,49 +45,12 @@ function getComputerChoice(){
 
 
 
-workspaceContainer.appendChild(scoreContainer);
-workspaceContainer.prepend(btnContainer);
-workspaceContainer.prepend(roundDisplay);
-workspaceContainer.append(scores);
 
 let humanScore = 0;
 let computerScore = 0;
 let round = 0;
 
-//body styles 
-Object.assign(body.style,{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "Elms Sans",
-    marginTop: "70px",
-})
-
-//workspaceContainer styles
-Object.assign(workspaceContainer.style,{
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#ffccee",
-    borderRadius: "20px",
-    width: "400px",
-    padding: "20px",
-    boxShadow: "10px 6px 0 0 orange, -10px -6px 0 0 purple",
-})
-
-
 scoreContainer.append(humanChoiceDisplay, computerChoiceDisplay);
-
-//scoreContainer styles
-Object.assign(scoreContainer.style, {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-})
-
 
 humanChoiceDisplay.textContent = `Your Choice: `;
 computerChoiceDisplay.textContent = `Computer Choice: `;
@@ -183,3 +138,49 @@ rpsBtns.forEach(btn =>{
     }
 )})
 
+//styles
+
+//body styles 
+Object.assign(body.style,{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    fontFamily: "Elms Sans",
+    marginTop: "70px",
+})
+
+//workspaceContainer styles
+Object.assign(workspaceContainer.style,{
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffccee",
+    borderRadius: "20px",
+    width: "400px",
+    padding: "20px",
+    boxShadow: "10px 6px 0 0 orange, -10px -6px 0 0 purple",
+})
+
+//scoreContainer styles
+Object.assign(scoreContainer.style, {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+})
+
+
+//btn styles 
+rpsBtns.forEach(btn =>{
+    Object.assign(btn.style,{
+        backgroundColor: "#ffffff",
+        border: "none",
+        margin: "8px",
+        padding: "10px 20px",
+        borderRadius: "10px",
+        fontFamily: "Elms Sans",
+        fontSize: "20px",
+    })
+})
